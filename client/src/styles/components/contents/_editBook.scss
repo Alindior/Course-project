@@ -1,0 +1,31 @@
+.edit__container {
+  background-color: #ffffff;
+  padding: 10px;
+  display: flex;
+}
+
+.map__content {
+  max-width: 200px;
+  padding-right: 15px;
+}
+
+.create-chapter {
+  margin-right: 5px;
+}
+
+.addChapter__form {
+  input {
+    max-width: 300px;
+  }
+  textarea {
+    max-width: 600px;
+  }
+}
+
+.addChapter_btn {
+  margin-top: 15px;
+}
+
+.action__btn-edit {
+  background-color: green;
+}

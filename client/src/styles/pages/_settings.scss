@@ -1,0 +1,25 @@
+.settings__container {
+  background-color: #fff;
+  padding: 25px 0;
+  input {
+    max-width: 250px;
+  }
+  .settings__form {
+    display: flex;
+    width: 300px;
+    margin: 0 auto;
+  }
+}
+
+.settings__form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+  .ant-form-item {
+    margin-bottom: 0;
+    &:last-child {
+      padding-left: 10px;
+    }
+  }
+}

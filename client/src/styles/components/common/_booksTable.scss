@@ -1,0 +1,112 @@
+.books__theme-dark {
+  .ant-table-thead > tr > th {
+    background-color: $dark-mode;
+    color: white;
+  }
+}
+
+.ant-table-thead {
+  tr {
+    th:last-child {
+      width: 100px;
+    }
+  }
+}
+.ant-table-tbody {
+  tr {
+    td:last-child {
+      width: 100px;
+    }
+  }
+}
+
+.actions__btn-public {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1000px) {
+  .ant-table-thead {
+    tr {
+      th:nth-last-child(2) {
+        display: none;
+      }
+    }
+  }
+  .ant-table-tbody {
+    tr {
+      td:nth-last-child(2) {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .ant-table-thead {
+    tr {
+      th:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+  .ant-table-tbody {
+    tr {
+      td:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .ant-table-thead {
+    tr {
+      th:nth-last-child(3) {
+        display: none;
+      }
+    }
+  }
+  .ant-table-tbody {
+    tr {
+      td:nth-last-child(3) {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .ant-table-thead {
+    tr {
+      th:nth-last-child(3) {
+        display: none;
+      }
+    }
+  }
+  .ant-table-tbody {
+    tr {
+      td:nth-last-child(3) {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .ant-table-thead {
+    tr {
+      th:nth-last-child(4) {
+        display: none;
+      }
+    }
+  }
+  .ant-table-tbody {
+    tr {
+      td:nth-last-child(4) {
+        display: none;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,39 @@
+.addBook__container {
+  transition: all 0.4s;
+  background-color: #fff;
+  padding: 25px 0;
+  margin: 0 auto;
+  width: 50%;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  &-dark {
+    background-color: $dark-mode;
+    label {
+      color: white;
+    }
+    .auth__top {
+      color: white;
+      h2 {
+        color: white;
+      }
+    }
+  }
+}
+
+.tags__wrapper {
+  background-color: green;
+}
+
+.addBook-title {
+  padding-bottom: 15px;
+}
+
+.addBook__form {
+  margin: 0 auto;
+  width: 50%;
+  input {
+    max-width: 250px;
+  }
+}

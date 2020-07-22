@@ -1,0 +1,21 @@
+.header__container {
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
+  -o-transition: all 0.25s;
+}
+
+.header__container-dark {
+  background-color: $dark-mode;
+  .swicher {
+    background-color: $primary;
+  }
+}
+
+.header__container-light {
+  background-color: white;
+  .swicher {
+    background-color: $primary;
+  }
+}

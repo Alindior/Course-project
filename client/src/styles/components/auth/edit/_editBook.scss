@@ -1,0 +1,9 @@
+@media (max-width: 700px) {
+  .edit__container {
+    flex-direction: column;
+    img {
+      width: 300px;
+      height: auto;
+    }
+  }
+}

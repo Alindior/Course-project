@@ -1,0 +1,26 @@
+.action__btn {
+  margin-right: 5px;
+}
+
+.home__user {
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  &-dark {
+    background-color: #001529;
+    .ant-card-meta-title {
+      color: white;
+    }
+    .ant-card-meta-description {
+      color: white;
+    }
+    .ant-card-actions {
+      background-color: $primary;
+      svg {
+        color: white;
+      }
+    }
+  }
+}

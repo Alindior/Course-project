@@ -1,0 +1,13 @@
+.loader__container {
+  text-align: center;
+  margin: 0 auto;
+  width: 40vw;
+  height: 50vh;
+//   background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    font-size: 150px;
+  }
+}

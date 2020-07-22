@@ -1,0 +1,29 @@
+.home__container {
+  .ant-table-thead {
+    tr {
+      th:last-child {
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .home__container {
+    .ant-table-thead {
+      tr {
+        th:last-child {
+          width: 160px;
+        }
+      }
+    }
+  }
+  .ant-table-tbody {
+    tr {
+      td:last-child {
+        width: 100px;
+        padding: 0;
+      }
+    }
+  }
+}

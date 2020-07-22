@@ -1,0 +1,47 @@
+.modal__edit {
+  .ant-modal-content {
+    width: 40vw;
+    left: 50%;
+    margin-left: -20vw;
+  }
+}
+
+.ant-modal-content {
+  width: 80vw;
+  left: 50%;
+  margin-left: -40vw;
+}
+
+.chapters__map {
+  padding-right: 10px;
+}
+
+.book__content {
+  width: 100%;
+}
+
+.reading__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addCommi_btn {
+  margin-left: 5px;
+}
+
+@media (max-width: 900px) {
+  .reading__wrapper {
+    flex-direction: column;
+  }
+  .book__content {
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .ant-modal-content {
+    width: 90vw;
+    left: 50%;
+    margin-left: -45vw;
+  }
+}
