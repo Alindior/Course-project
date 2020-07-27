@@ -11,7 +11,8 @@ export const Actions = {
     CHANGE_LANGUAGE: "app/CHANGE_LANGUAGE",
     SET_THEME: "app/SET_THEME",
     SET_LANGUAGE: "app/SET_LANGUAGE",
-    FORM_UPDATE_CHAPTER: "app/FORM_UPDATE_CHAPTER"
+    FORM_UPDATE_CHAPTER: "app/FORM_UPDATE_CHAPTER",
+    FORM_ADD_CHAPTER: "app/FORM_ADD_CHAPTER",
 }
 
 export const AlertTypes = {

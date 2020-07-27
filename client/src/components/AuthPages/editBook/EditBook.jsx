@@ -1,26 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from 'antd';
 
-import { FormAddChapter } from "./FormAddChapter";
-import { MapChapters } from "./MapChapters";
-import { ChapterList } from "./chapters/ChaptersList";
-import { BookHeader } from "./BookHeader";
+import { FormAddChapter } from "./content/FormAddChapter";
+import { ContentOfBook } from "./content/ContentOfBook";
+import { ChapterList } from "./content/chapters/ChaptersList";
+import { BookHeader } from "./header/BookHeader";
 
-export const EditBook = ({ book }) => {
+import { ModalItem } from "../../ModalItem";
+
+export const EditBook = ({ book, form, toggleForm }) => {
     const { _id, chapters } = book;
-    const [form, setForm] = useState(false);    
-    const onBack = () => setForm(!form);
     return (
-        <>
+        <div className="edit__container">
             <div className="map__content">
-                <MapChapters chapters={chapters} />
+                <ContentOfBook chapters={chapters} />
             </div>
             <div className="edit__book">
                 <BookHeader {...book} />
+                {form
+                    &&
+                    <ModalItem close={toggleForm} isShow={form} title="Добавить новую главу">
+                        <FormAddChapter onBack={toggleForm} booksId={_id}/>
+                    </ModalItem>
+                }
+                <Button type="primary" onClick={toggleForm} className="addChapter_btn">Добавить главу</Button>
                 <ChapterList chapters={chapters} booksId={_id} />
-                {form && <FormAddChapter onBack={onBack} booksId={_id} />}
-                {!form && <Button type="primary" onClick={onBack} className="addChapter_btn">Добавить главу</Button>}
             </div>
-        </>
+        </div>
     )
 }

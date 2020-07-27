@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, Input, Button } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 
-import { UploadImage } from "../UploadImage"
-import { updateChapter } from "../../../../store/books/actions";
+import { UploadImage } from "./UploadImage";
+import { updateChapter } from "../../../../../store/books/actions";
 import { SelectOrder } from "./SelectOrder";
 
 const { TextArea } = Input;

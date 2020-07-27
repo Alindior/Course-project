@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { LockOutlined, UnlockOutlined, UserOutlined, UserAddOutlined } from '@ant-design/icons';
 
 import { ActionButtons } from "./ActionButtons";
 
@@ -24,30 +25,30 @@ export const columns = (sortedInfo, filteredInfo, tags, language) => {
                 title: language === "ru" ? "Статус" : "Status",
                 dataIndex: 'admin',
                 key: 'admin',
-                sorter: (a, b) => a.admin.length - b.admin.length,
-                sortOrder: sortedInfo.columnKey === 'admin' && sortedInfo.order,
-                ellipsis: true,
                 render: (status) => {
-                    if (status) {
-                        return "Админ"
-                    } else {
-                        return "Пользователь"
-                    }
+                    return status ?
+                        (<div className="icon__status">
+                            <UserAddOutlined />
+                        </div>)
+                        :
+                        (<div className="icon__status">
+                            <UserOutlined />
+                        </div>)
                 }
             },
             {
                 title: language === "ru" ? "Доступ" : "Access",
                 dataIndex: 'status',
                 key: 'status',
-                sorter: (a, b) => a.status.length - b.status.length,
-                sortOrder: sortedInfo.columnKey === 'status' && sortedInfo.order,
-                ellipsis: true,
                 render: (status) => {
-                    if (status) {
-                        return "Активен"
-                    } else {
-                        return "Заблокирован"
-                    }
+                    return status ?
+                        (<div className="icon__status">
+                            <UnlockOutlined />
+                        </div>)
+                        :
+                        (<div className="icon__status">
+                            <LockOutlined />
+                        </div>)
                 }
             },
             {

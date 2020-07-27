@@ -9,8 +9,8 @@ module.exports = class UserServis {
         this._userModel = userModel;
     }
     async Registration(canditateUser) {
-        const { email, login, password } = canditateUser;
         try {
+            const { email, login, password } = canditateUser;
             const salt = await byCrypt.genSalt(10);
             const hash = await byCrypt.hash(password, salt);
             const user = new this._userModel({ email, login, password: hash });
@@ -30,6 +30,9 @@ module.exports = class UserServis {
             if (!user) {
                 return { message: "Пользователя с таким Email'ом не существует" }
             }
+            if (!user.status) {
+                return { message: "Ваш аккаунт заблокирован" }
+            }
             const isMatch = await byCrypt.compare(password, user.password);
             if (isMatch) {
                 if (user.isConfirmed) {
@@ -38,10 +41,11 @@ module.exports = class UserServis {
                         login: user.login,
                         name: user.name,
                         admin: user.admin,
+                        status: user.status,
                         name: user.name,
                         lastname: user.lastname
                     };
-                    const token = jwt.sign(payload, config.secret, { expiresIn: "1h" });
+                    const token = jwt.sign(payload, config.secret);
                     return { token: token };
                 } else {
                     return { message: "Аккаунт еще не подтвержден , проверьте почтовый ящик, который вы указали при регистрации" }
@@ -75,16 +79,18 @@ module.exports = class UserServis {
     }
 
     async ValidationBeforRegister(canditateUser) {
-        const { email, login } = canditateUser;
-        const candidateEmail = await this._userModel.findOne({ email });
-        const candidateLogin = await this._userModel.findOne({ login });
-        if (candidateEmail || candidateLogin) {
-            console.log("Не прошла валидация");
-            const reason = candidateEmail ? "email" : "login";
-            return { isValid: false, reason }
+        try {
+            const { email, login } = canditateUser;
+            const candidateEmail = await this._userModel.findOne({ email });
+            const candidateLogin = await this._userModel.findOne({ login });
+            if (candidateEmail || candidateLogin) {
+                const reason = candidateEmail ? "email" : "login";
+                return { isValid: false, reason }
+            }
+            return { isValid: true }
+        } catch (e) {
+            console.log(e);
         }
-        console.log("Валидация прошал, ща будет регистрация");
-        return { isValid: true }
     }
     async ConfirmRegistration(id) {
         try {

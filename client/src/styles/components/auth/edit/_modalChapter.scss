@@ -1,0 +1,17 @@
+.modal__chapters {
+  .ant-modal-content {
+    width: 40vw;
+    left: 50%;
+    margin-left: -20vw;
+  }
+}
+
+@media (max-width: 900px) {
+  .modal__chapters {
+    .ant-modal-content {
+      width: 80vw;
+      left: 50%;
+      margin-left: -40vw;
+    }
+  }
+}

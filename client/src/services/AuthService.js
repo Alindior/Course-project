@@ -5,12 +5,12 @@ export class AuthService {
     async Login(userDate) {
         try {
             const { data } = await axios.post("/api/auth/login", userDate);
-            console.log(data);
-            const decoded = jwtDecode(data.token);
-            console.log(decoded);
-            localStorage.setItem('access_token', data.token);
-            this.setAuthToken(data.token);
-            return { token: decoded };
+            if (data.token) {
+                const decoded = jwtDecode(data.token);
+                localStorage.setItem('access_token', data.token);
+                this.setAuthToken(data.token);
+                return { token: decoded };
+            }
         } catch ({ response }) {
             return { error: response.data };
         }
@@ -20,7 +20,7 @@ export class AuthService {
             const { data } = await axios.post("/api/auth/register", userDate);
             return { message: data.message };
         } catch ({ response }) {
-            return { error: response.data };
+            return { error: response.data.message }
         }
     }
 
@@ -49,10 +49,6 @@ export class AuthService {
             const { access_token } = localStorage;
             this.setAuthToken(access_token);
             const decoded = jwtDecode(access_token);
-            const currentTime = Date.now() / 1000;
-            if (decoded.exp < currentTime) {
-                return { status: false };
-            }
             return { status: true, user: decoded };
         }
         return { status: false };

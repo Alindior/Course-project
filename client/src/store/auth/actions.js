@@ -3,21 +3,34 @@ import { showAlert, showModalSuccessRegistr } from "../app/actions";
 import { AlertTypes } from "../app/actionTypes";
 
 export const register = (userDate) => async (dispatch, getState, { AuthService }) => {
-    const { message, error } = await AuthService.Register(userDate);
-    message ?
-        dispatch(showModalSuccessRegistr())
-        :
-        dispatch(showAlert(error, AlertTypes.info));
+    try {
+        const { message, error } = await AuthService.Register(userDate);
+        if (error) {
+            dispatch(showAlert(error, AlertTypes.info));
+            return null;
+        }
+        if (message) {
+            dispatch(showAlert(message, AlertTypes.success));
+            dispatch(showModalSuccessRegistr())
+        }
+    } catch (e) {
+        dispatch(showAlert("Что-то пошло не так", AlertTypes.warning));
+    }
 }
 
 export const logIn = (user, history) => async (dispatch, getState, { AuthService }) => {
-    const { token, error } = await AuthService.Login(user);
-    if (token) {
-        dispatch({ type: Actions.SET_CURRENT_USER, payload: token });
-        history.push("/home");
-    }
-    if (error) {
-        dispatch(showAlert(error, AlertTypes.error));
+    try {
+        const { token, error } = await AuthService.Login(user);
+        if (token) {
+            console.log("нормас");
+            dispatch({ type: Actions.SET_CURRENT_USER, payload: token });
+            history.push("/home");
+        }
+        if (error) {
+            dispatch(showAlert(error, AlertTypes.error));
+        }
+    } catch (e) {
+        console.log(e);
     }
 }
 

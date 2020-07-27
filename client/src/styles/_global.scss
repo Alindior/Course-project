@@ -16,5 +16,11 @@ body {
 
 .content__wrapper {
   padding: 20px;
-  height: 100vh;
+  height: max-content;
+}
+
+@media (max-width: 600px) {
+  .ant-layout-sider-trigger {
+    display: none;
+  }
 }

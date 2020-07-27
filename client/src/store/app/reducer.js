@@ -9,11 +9,14 @@ const initialState = {
     formAddComment: false,
     theme: localStorage.theme ? localStorage.theme : "light",
     language: localStorage.language ? localStorage.language : "ru",
-    formUpdateChapter: null
+    formUpdateChapter: null,
+    formAddChapter: false,
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case Actions.FORM_ADD_CHAPTER:
+            return { ...state, formAddChapter: !state.formAddChapter }
         case Actions.FORM_UPDATE_CHAPTER:
             return { ...state, formUpdateChapter: action.payload }
         case Actions.SHOW_ALERT:

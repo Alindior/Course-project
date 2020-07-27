@@ -1,6 +1,6 @@
 import { Actions } from "./actionTypes";
 import { socket } from "../../sockets";
-import { showFormAddComment, toggleFormUpdateChapter } from "../app/actions";
+import { showFormAddComment, toggleFormUpdateChapter, toggleFormAddChapter } from "../app/actions";
 
 export const setLikeChapter = (booksId, chaptersId) => async (dispatch, gertState, { ChaptersService }) => {
     try {
@@ -175,26 +175,32 @@ export const getOneById = (booksId) => async (dispatch, getState, { BooksService
 
 export const addChapter = (bookId, chapter) => async (dispatch, getState, { BooksService }) => {
     try {
+        dispatch(setLoadingAddChapter(true));
         const newBook = await BooksService.AddChapter(bookId, chapter);
         dispatch({
             type: Actions.ADD_CHAPTER,
             payload: newBook
-        })
-        console.log(newBook);
+        });
+        dispatch(setLoadingAddChapter(false));
+        dispatch(toggleFormAddChapter());
     } catch (e) {
         console.log(e);
+        dispatch(setLoadingAddChapter(false));
     }
 }
 
 export const removeChapter = (booksId, chaptersId) => async (dispatch, getState, { BooksService }) => {
     try {
+        dispatch(setLoadingRemoveChapter(chaptersId));
         const book = await BooksService.RemoveChapter(booksId, chaptersId);
         dispatch({
             type: Actions.REMOVE_CHAPTER,
             payload: book
-        })
+        });
+        dispatch(setLoadingRemoveChapter(null));
     } catch (e) {
         console.log(e);
+        dispatch(setLoadingRemoveChapter(null));
     }
 }
 
@@ -267,5 +273,19 @@ const setLoadingRemoveBook = (booksId) => (dispatch) => {
     dispatch({
         type: Actions.REMOVE_BOOK_LOADING,
         payload: booksId
+    })
+}
+
+const setLoadingAddChapter = (isLoading) => (dispatch) => {
+    dispatch({
+        type: Actions.ADD_CHAPTER_LOADING,
+        payload: isLoading
+    })
+}
+
+const setLoadingRemoveChapter = (chapterId) => (dispatch) => {
+    dispatch({
+        type: Actions.REMOVE_CHAPTER_LOADING,
+        payload: chapterId
     })
 }

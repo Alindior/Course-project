@@ -1,9 +1,40 @@
+.addChapter_btn {
+  margin-bottom: 15px;
+}
+
+.btns__edit-chapter {
+  width: max-content;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+
+.edit__book {
+  padding-left: 10px;
+}
+
+.chapter__img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+.chapter__title {
+  margin-bottom: 5px;
+  // width: 65vw;
+}
+
+.chapter__container {
+  width: 70%;
+  padding: 10px;
+  padding-right: 50px;
+  margin-bottom: 5px;
+}
+
 @media (max-width: 700px) {
   .edit__container {
     flex-direction: column;
-    img {
-      width: 300px;
-      height: auto;
-    }
+  }
+  .chapter__container {
+    width: 100%;
   }
 }

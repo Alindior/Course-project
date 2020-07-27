@@ -83,13 +83,14 @@ module.exports = class BookService {
         try {
             const book = await this._bookMedel.findById({ _id: booksId });
             if (book) {
-                const chapterIndex = book.chapters.findIndex(c => c._id.toString() === chaptersId);
-                if (chapterIndex < 0) {
-                    console.log("Глава не найдена");
-                }
-                book.chapters.splice(chapterIndex, 1);
-                const updatedBook = await book.save();
-                return updatedBook;
+                const chapter = book.chapters.find(c => c._id.toString() === chaptersId);
+                let chaptersAfterRemove = book.chapters.filter((chap) => chap._id !== chapter._id);
+                chaptersAfterRemove.forEach((ch, index) => {
+                    ch.order = index + 1;
+                });
+                book.chapters = _.sortBy(chaptersAfterRemove, "order");
+                await book.save();
+                return book;
             }
         } catch (e) {
             console.log(e);

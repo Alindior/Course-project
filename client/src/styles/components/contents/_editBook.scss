@@ -5,7 +5,7 @@
 }
 
 .map__content {
-  max-width: 200px;
+  width: 300px;
   padding-right: 15px;
 }
 
@@ -26,6 +26,9 @@
   margin-top: 15px;
 }
 
-.action__btn-edit {
-  background-color: green;
+
+@media (max-width: 700px) {
+  .map__content {
+    max-width: 80vw;
+  }
 }

@@ -3,7 +3,7 @@
   background-color: #fff;
   padding: 25px 0;
   margin: 0 auto;
-  width: 50%;
+  width: 70%;
   -webkit-transition: all 0.4s;
   -moz-transition: all 0.4s;
   -ms-transition: all 0.4s;
@@ -32,8 +32,14 @@
 
 .addBook__form {
   margin: 0 auto;
-  width: 50%;
+  width: 50vw;
   input {
     max-width: 250px;
+  }
+}
+
+@media (max-width: 800px) {
+  .addBook__container {
+    width: 100%;
   }
 }

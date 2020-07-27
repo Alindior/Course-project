@@ -6,6 +6,7 @@ const io = require("socket.io")(server);
 const connectToMongoDB = require("./lib/mongoose-config");
 const config = require("./keys");
 const middlewares = require("./middlewares");
+const fileUpload = require("express-fileupload");
 const routes = require("./routes");
 const Book = require('./models/book');
 
@@ -20,6 +21,7 @@ io.on("connection", (client) => {
 })
 
 middlewares.forEach((m) => app.use(m));
+app.use(fileUpload());
 
 app.use("/api/auth", routes.auth);
 app.use("/api/books", routes.book);
@@ -38,8 +40,6 @@ if (process.env.NODE_ENV === "production") {
     });
 }
 
-console.log(path.resolve(__dirname, "../client", "build", "index.html"));
-
 async function start() {
     try {
         await connectToMongoDB();
@@ -51,5 +51,6 @@ async function start() {
         process.exit();
     }
 }
+
 
 start();

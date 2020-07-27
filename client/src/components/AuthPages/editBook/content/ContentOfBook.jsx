@@ -1,9 +1,9 @@
 import React from "react";
-import { Anchor, Descriptions } from 'antd';
+import { Anchor } from 'antd';
 
 const { Link } = Anchor;
 
-export const MapChapters = ({ chapters }) => {
+export const ContentOfBook = ({ chapters }) => {
     return (
         <Anchor >
             <Link href="#content" title="Описание" />

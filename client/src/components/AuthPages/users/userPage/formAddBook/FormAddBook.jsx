@@ -8,7 +8,7 @@ import { AddFieldTag } from "./AddFieldTag";
 import { InputItem } from "./InputItem";
 import { GenreSelect } from "./GenreSelect";
 
-export const FormAddBook = ({ usersId }) => {
+export const FormAddBook = ({ usersId, toggleForm }) => {
     const dispatch = useDispatch();
     const [tags, setTags] = useState([]);
     const addTag = (tag) => setTags([...tags, tag]);
@@ -28,8 +28,11 @@ export const FormAddBook = ({ usersId }) => {
             </Form.Item>
             <Form.Item label=" " colon={false}>
                 <Button type="primary" htmlType="submit">
-                    Submit
-                 </Button>
+                    Создать
+                </Button>
+                <Button type="primary" onClick={toggleForm} style={{ marginLeft: "5px" }}>
+                    Назад
+                </Button>
             </Form.Item>
         </Form>
     );

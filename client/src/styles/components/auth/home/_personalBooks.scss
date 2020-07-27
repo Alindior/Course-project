@@ -13,7 +13,7 @@
     .ant-table-thead {
       tr {
         th:last-child {
-          width: 160px;
+          width: 50%;
         }
       }
     }
@@ -21,9 +21,20 @@
   .ant-table-tbody {
     tr {
       td:last-child {
-        width: 100px;
+        width: 50%;
         padding: 0;
       }
+    }
+  }
+  .actions__btn-personal {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    button {
+      margin-bottom: 2px;
     }
   }
 }

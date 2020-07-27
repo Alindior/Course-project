@@ -6,6 +6,6 @@ module.exports = {
     "emailFrom": process.env.EMAIL,
     "AWSAccessKeyId": process.env.AWS_KEY,
     "AWSSecretKey": process.env.AWS_SECRET,
-    "Bucket": process.env.AWS_BUCKET
-
+    "Bucket": process.env.AWS_BUCKET,
+    "baseUrl": process.env.BASE_URL
 };

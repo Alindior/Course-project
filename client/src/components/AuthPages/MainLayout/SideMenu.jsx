@@ -28,10 +28,10 @@ export const SideMenu = () => {
             <div className="user__card">
                 <UserCard login={auth.user.login} menuOpened={app.menuOpened} theme={app.theme} />
             </div>
-            <Menu theme={app.theme} defaultSelectedKeys={['1']} mode="inline"    >
-                <Menu.Item key="1" icon={<HomeOutlined />}>
-                    <Link to="/home">
-                        {app.language === "ru" ? "Моя страница" : "My page"}
+            <Menu theme={app.theme} defaultSelectedKeys={['4']} style={{ height: "85vh" }}>
+                <Menu.Item key="4" icon={<ReadOutlined />}>
+                    <Link to="/books">
+                        {app.language === "ru" ? "Книги" : "Books"}
                     </Link>
                 </Menu.Item>
                 {auth.user.admin && <Menu.Item key="2" icon={<UserOutlined />}>
@@ -39,14 +39,14 @@ export const SideMenu = () => {
                         {app.language === "ru" ? "Пользователи" : "Users"}
                     </Link>
                 </Menu.Item>}
+                <Menu.Item key="1" icon={<HomeOutlined />}>
+                    <Link to="/home">
+                        {app.language === "ru" ? "Моя страница" : "My page"}
+                    </Link>
+                </Menu.Item>
                 <Menu.Item key="3" icon={<AppstoreAddOutlined />}>
                     <Link to="/add">
                         {app.language === "ru" ? "Создать книгу" : "Create book"}
-                    </Link>
-                </Menu.Item>
-                <Menu.Item key="4" icon={<ReadOutlined />}>
-                    <Link to="/books">
-                        {app.language === "ru" ? "Книги" : "Books"}
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="6" icon={<LogoutOutlined />} onClick={onLogout}>

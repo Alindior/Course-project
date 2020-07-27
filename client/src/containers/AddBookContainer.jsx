@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import classNames from "classnames";
 
 import { FormAddBook } from "../components/AuthPages/addBook";
 import { ResultPAge } from "../components/ResultPage";
+import { getAllTags } from "../store/tags/actions";
 
 export const AddBookContainer = () => {
+    const dispatch = useDispatch();
     const { books, app } = useSelector((state) => state);
     useEffect((() => {
-        document.title = "Добавить книгу"
+        document.title = "Добавить книгу";
+        dispatch(getAllTags());
     }), []);
     return (
         <>

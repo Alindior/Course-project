@@ -12,11 +12,17 @@ const initialState = {
     publicBooks: [],
     booksForOne: [],
     isLoadingRemoveBool: null,
-    isLoadingCreateBook: false
+    isLoadingCreateBook: false,
+    isLoadingAddChapter: false,
+    isLoadingRemoveChapter: false
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case Actions.REMOVE_CHAPTER_LOADING:
+            return { ...state, isLoadingRemoveChapter: action.payload }
+        case Actions.ADD_CHAPTER_LOADING:
+            return { ...state, isLoadingAddChapter: action.payload }
         case Actions.SET_LOADING_CREATE_BOOK:
             return { ...state, isLoadingCreateBook: action.payload }
         case Actions.SET_LIKE_CHAPTER:

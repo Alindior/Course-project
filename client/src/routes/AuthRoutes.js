@@ -23,7 +23,7 @@ export const AuthRoutes = () => {
                         <Route exact path={["/users/:login", "/users/:login/:id"]} component={UserPage} />
                         <Route path={["/home/:id", "/home"]} component={HomePage} />
                         <Route path={["/books/:id", "/books"]} component={BooksPage} />
-                        <Redirect to="/home" />
+                        <Redirect to="/book" />
                     </Switch>
                 </Content>
             </Layout>

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { NotAuthRoutes, AuthRoutes } from "./routes";
 import { updateAuthStatus } from "./store/auth/actions";
+import { getAllBookPublic } from "./store/books/actions";
 import { AlertApp } from "./components/AlertApp";
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(updateAuthStatus());
+    dispatch(getAllBookPublic());
   }, []);
   return (
     <>

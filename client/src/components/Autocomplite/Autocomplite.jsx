@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
-import { Input, AutoComplete } from 'antd';
+import { AutoComplete } from 'antd';
 
 const searchResult = (query, books) => {
     return books.filter((book) => {
@@ -14,26 +14,23 @@ const searchResult = (query, books) => {
         });
 
         if (name.includes(query) || name.includes(description) || filteredChapters.length !== 0) {
-            return { ...book, result: "Жопа" };
+            return { ...book };
         }
     }).map((item, idx) => {
         return {
-            // value: idx,
             label: (
-                <div
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                    }}
-                >
-                    <span>
-                        <Link
-                            to={`/books/${item._id}`}
-                        >
+                <Link to={`/books/${item._id}`} >
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                        }}
+                    >
+                        <span>
                             {item.name}
-                        </Link>
-                    </span>
-                </div>
+                        </span>
+                    </div>
+                </Link>
             ),
         };
     });
@@ -59,8 +56,8 @@ export const Autocomplite = () => {
             options={options}
             onSelect={onSelect}
             onSearch={handleSearch}
+            enterButton
         >
-            <Input.Search size="large" placeholder="input here" enterButton />
         </AutoComplete>
     );
 };

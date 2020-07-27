@@ -13,10 +13,10 @@ export const ActionButtons = ({ bookId }) => {
         dispatch(removeBook(bookId));
     }
     return (
-        <>
+        <div className="userPage__btns">
             <Button type="primary" className="action__btn"><Link to={`/users/${login}/${bookId}`}><ReadOutlined /></Link></Button>
             <Button type="primary" className="action__btn"><Link to={`/edit/${bookId}`}><EditFilled /></Link></Button>
             <Button type="primary" danger className="action__btn" onClick={onDelete}><DeleteOutlined /></Button>
-        </>
+        </div>
     )
 }

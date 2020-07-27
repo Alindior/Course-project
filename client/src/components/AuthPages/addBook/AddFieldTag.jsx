@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Input, Button } from 'antd';
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined } from '@ant-design/icons';
 
 import { TagItem } from "./TagItem";
 import { AutocompliteTags } from "./AutocompliteTags";

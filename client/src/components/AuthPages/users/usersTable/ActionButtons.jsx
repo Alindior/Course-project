@@ -28,39 +28,36 @@ export const ActionButtons = ({ id }) => {
         dispatch(deleteUser(id))
     }
     return (
-        <div className="actions__btn-users">
-            {
-                currentUser.email === "alindior123@gmail.com" ?
-                    <td>Это корневой админ</td>
-                    :
-                    <>
-                        <Button
-                            type="primary"
-                            className="action__btn"
-                            onClick={toggleAdminStatus}>
-                            <Link>
-                                {isLoadingAdmin === id ? <LoadingOutlined /> : <UserSwitchOutlined />}
-                            </Link>
-                        </Button>
-                        <Button
-                            type="primary"
-                            className="action__btn"
-                            onClick={togleBlockStatus}
-                        >
-                            <Link >
-                                {isLoadingBlock === id ? <LoadingOutlined /> : <UserDeleteOutlined />}
-                            </Link>
-                        </Button>
-                        <Button
-                            type="primary"
-                            danger
-                            className="action__btn"
-                            onClick={onDeleteUser}
-                        >
-                            {isLoadingRemove === id ? <LoadingOutlined /> : <CloseCircleOutlined />}
-                        </Button>
-                    </>
-            }
-        </div>
+        currentUser.email === "alindior123@gmail.com" ?
+            <td><span className="root__admin">Создатель</span></td>
+            :
+            <div className="actions__btn-users">
+                <Button
+                    type="primary"
+                    className="action__btn"
+                    onClick={toggleAdminStatus}>
+                    <Link>
+                        {isLoadingAdmin === id ? <LoadingOutlined /> : <UserSwitchOutlined />}
+                    </Link>
+                </Button>
+                <Button
+                    type="primary"
+                    className="action__btn"
+                    onClick={togleBlockStatus}
+                >
+                    <Link >
+                        {isLoadingBlock === id ? <LoadingOutlined /> : <UserDeleteOutlined />}
+                    </Link>
+                </Button>
+                <Button
+                    type="primary"
+                    danger
+                    className="action__btn"
+                    onClick={onDeleteUser}
+                >
+                    {isLoadingRemove === id ? <LoadingOutlined /> : <CloseCircleOutlined />}
+                </Button>
+
+            </div>
     )
 }

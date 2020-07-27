@@ -90,3 +90,9 @@ export const toggleFormUpdateChapter = (chaptersId) => (dispatch) => {
 
     })
 }
+
+export const toggleFormAddChapter = () => (dispatch) => {
+    dispatch({
+        type: Actions.FORM_ADD_CHAPTER
+    })
+}

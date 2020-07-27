@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Descriptions, Card } from 'antd';
 
 import { ActionButtons } from "./ActionButtons";
 import { FormEditChapter } from "./FormEditChapter";
 
-import { toggleFormUpdateChapter } from "../../../../store/app/actions";
+import { toggleFormUpdateChapter } from "../../../../../store/app/actions";
 
 export const ChapterItem = ({ title, image, content, order, booksId, _id, chapters }) => {
     const dispatch = useDispatch();
@@ -32,8 +32,7 @@ export const ChapterItem = ({ title, image, content, order, booksId, _id, chapte
                         onCancel={onCancel}
                     /> :
                     (
-                        <div>
-                            <a id={order} />
+                        <div id={order} className="chapter__container">
                             <Descriptions
                                 title={<ActionButtons
                                     booksId={booksId}
@@ -41,20 +40,14 @@ export const ChapterItem = ({ title, image, content, order, booksId, _id, chapte
                                     order={order}
                                     title={title}
                                     toggleForm={showForm}
-                                />} />
-                            <Card
-
-                                bordered={false}
-                                size="small"
-                                cover={<img alt="example" src={image} style={{ height: "auto", width: "240px", objectFit: "cover" }} />}
-                            />
-                            <Descriptions.Item >
-                                <div onDoubleClick={() => {
-                                    console.log("Два раза клинкул===");
-                                }}>
-                                    {content}
-                                </div>
-                            </Descriptions.Item>
+                                />}>
+                                <Descriptions.Item className="chapter__content">
+                                    <div>
+                                        <img alt="example" className="chapter__img" src={image} />
+                                        <p>{content}</p>
+                                    </div>
+                                </Descriptions.Item>
+                            </Descriptions>
                         </div>
                     )
             }
